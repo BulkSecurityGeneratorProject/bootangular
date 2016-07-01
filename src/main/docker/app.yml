@@ -1,0 +1,30 @@
+version: '2'
+services:
+    bootangular-app:
+        image: bootangular
+        external_links:
+            - bootangular-cassandra:cassandra
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATA_CASSANDRA_CONTACTPOINTS=cassandra
+            - JHIPSTER_SLEEP=30 # gives time for the cassandra cluster to start and execute the migration scripts
+        ports:
+            - 8080:8080
+    bootangular-cassandra:
+        extends:
+            file: cassandra-cluster.yml
+            service: bootangular-cassandra
+    bootangular-cassandra-node:
+        image: cassandra:2.2.5
+        links:
+            - bootangular-cassandra:seed
+        environment:
+            - CASSANDRA_SEEDS=seed
+    bootangular-cassandra-migration:
+        extends:
+            file: cassandra-migration.yml
+            service: bootangular-cassandra-migration
+        links:
+            - bootangular-cassandra
+        environment:
+            - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql

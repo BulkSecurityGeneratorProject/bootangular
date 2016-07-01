@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "3.4.2",
+    "baseName": "bootangular",
+    "packageName": "io.jadr.bootangular",
+    "packageFolder": "io/jadr/bootangular",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "cassandra",
+    "devDatabaseType": "cassandra",
+    "prodDatabaseType": "cassandra",
+    "searchEngine": "no",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "86062da107f5de1ef5f7296fdbcca1885e953d7a",
+    "useSass": true,
+    "applicationType": "monolith",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ]
+  }
+}
